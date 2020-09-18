@@ -1,12 +1,12 @@
 module.exports = function check(str, bracketsConfig) {
-  let found = 1;
-  let oldStr;
-  while(found == 1) {
-    oldStr = str;
-    for (let bracket of bracketsConfig) {
-      str = str.split(bracket[0] + bracket[1]).join('');
+    let found = 1;
+    while(found == 1) {
+        let oldStr = str;
+        bracketsConfig.map(n => str = str.replace(n[0] + n[1], ''));
+        if (oldStr === str) { found = 0; }
     }
-    if (oldStr === str) { found = 0; }
+    return (str.length == 0) ? true : false;
 }
-  return (str.length == 0) ? true : false;
-}
+
+
+
